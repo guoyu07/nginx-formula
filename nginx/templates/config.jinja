@@ -53,12 +53,12 @@ http {
 {% endif %}
 {% endif %}
 
-    {% set upstream = nginx.get('upstream', {})
+    {% set upstream = nginx.get('upstream', {}) -%}
     {% if upstream -%}
-    {% for name,lines in upstream.items() -%}    
+    {% for name,lines in upstream.items() -%}
     upstream {{ name }} {
     {% for key,val in lines.items()
-        {{ key }} {{ val}};    
+        {{ key }} {{ val}};
     {% endfor -%}
     }
     {% endfor -%}
