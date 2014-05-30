@@ -57,7 +57,7 @@ http {
     {% if upstream -%}
     {% for name,lines in upstream.items() -%}
     upstream {{ name }} {
-    {% for key,val in lines.items()
+    {% for key,val in lines.items() -%}
         {{ key }} {{ val}};
     {% endfor -%}
     }
