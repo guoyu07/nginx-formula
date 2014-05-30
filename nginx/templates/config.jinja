@@ -71,6 +71,17 @@ http {
 {% endif -%}
 {% endif %}
 
+    {% set upstream = nginx.get('upstream', {}) -%}
+    {% if upstream -%}
+    {% for name,lines in upstream.items() -%}
+    upstream {{ name }} {
+    {% for key,val in lines.items() -%}
+        {{ key }} {{ val}};
+    {% endfor -%}
+    }
+    {% endfor -%}
+    {% endif -%}
+
     include /etc/nginx/conf.d/*.conf;
     include /etc/nginx/sites-enabled/*.conf;
 }
