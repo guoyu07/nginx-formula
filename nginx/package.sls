@@ -1,4 +1,4 @@
-{% set use_upstart = pillar.get('nginx', {}).get('use_upstart', true) %}
+{% set use_upstart = pillar.get('nginx', {}).get('use_upstart', False) %}
 {% if use_upstart %}
 nginx-old-init:
   file:
